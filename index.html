@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	#hd{
+		width: 300px;
+		height: 150px;
+		background: red;
+         position: relative;
+         left: 0;
+         top: 0;
+ 
+	}
+	#hd h1{
+		text-align: center;
+	     
+		color: #fff;
+	}
+	#x{
+         width: 20px;
+         height: 20px;
+         background: #fff;
+        position: absolute;
+        text-align: center;
+        right: 0;
+
+	}
+	</style>
+</head>
+<body>
+       <div id="hd">
+       	<div id="x">X</div>
+         <h1>成都金鑫家具沙发www.cdjxsofa.com</h1>
+       </div>
+       <script type="text/javascript">
+       	var hd=document.getElementById("hd");
+       	var le=hd.offsetLeft;
+       	var r=hd.offsetRight;
+       	var top=hd.offsetTop;
+       	var sw=hd.offsetWidth;
+       	var sh=hd.offsetHeight;
+       	var x=document.getElementById("x");
+       	var timer;
+       	//获得网页窗口的宽高
+
+       		 var max_left=document.documentElement.clientWidth-sw;
+       	 var max_top=document.documentElement.clientHeight-sh;
+         console.log(le);
+         
+         //console.log(windowheight,windowwidth);
+         // var fer=0;
+          var ma=3;
+          var ya=4;
+           timer=setInterval(autorun,40);
+         x.onclick=function(){
+           hd.style.display="none";
+         }
+hd.onmouseover=function(){
+	clearInterval(timer);
+}
+hd.onmouseout=function(){
+	 timer=setInterval(autorun,40);
+}
+
+//窗体事件
+ window.onresize=function(){
+ max_left=document.documentElement.clientWidth-sw;
+ max_top=document.documentElement.clientHeight-sh;
+
+ hd.style.top=0;
+ hd.style.left=0;
+ ma=3;
+ ya=4;
+ }
+//定时器
+  function autorun(){
+ 	// var nb_w=Math.floor(Math.random()*(sw+1-0)+0);
+        // var nb_h=Math.floor(Math.random()*(sh+1-0)+0);
+          var old_left=hd.offsetLeft;
+          var old_top=hd.offsetTop;
+           var new_left=old_left+ma;
+           var new_top=old_top+ya;
+           hd.style.left=new_left+"px";
+           hd.style.top=new_top+"px";
+             if(new_left>max_left){
+                   new_left=max_left;
+             }
+             if(new_left<0){
+               new_left=0;
+             }
+            if(new_top>max_top){
+                   new_top=max_top;
+            }
+            if(new_top<0){
+            new_top=0;
+            }
+            if(new_top==max_top||new_top==0){
+             ya=-1*ya;
+          } 
+        
+           if(new_left==max_left||new_left==0){
+    ma=-1*ma;
+}
+  } 
+
+
+       	
+       </script>
+</body>
+</html>
